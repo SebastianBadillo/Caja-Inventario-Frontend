@@ -1,0 +1,5 @@
+<p>
+  gestion works!
+</p>
+<app-sign-in [listadoMunicipio]="listadoMunicipios" (personaEmitir)="addPersona($event)"></app-sign-in>
+<app-table-personas [listadoPersonas]="listadoPersonas" (deleteEvent)="deletePersona($event)"></app-table-personas>

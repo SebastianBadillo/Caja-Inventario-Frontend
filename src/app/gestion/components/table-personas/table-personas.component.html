@@ -1,0 +1,20 @@
+<div class="container">
+  <h2 *ngIf="listadoPersonas.length > 0">Registros</h2>
+  <div *ngFor="let persona of listadoPersonas; let i = index">
+    <div class="persona">
+      <p class="truncate">
+        {{ i + 1 }}. {{ persona.nombre }} {{ persona.apellido }}
+        {{ persona.email }}
+      </p>
+      <div>
+
+        <div class="acciones">
+          <button type="button" (click)="eliminate(persona)">eliminar</button>
+          <!-- <button type="button" (click)="edit(persona)">Edit</button> -->
+        </div>
+      </div>
+    </div>
+
+    <hr style="width: 100%; margin-top: 8px; margin-bottom: 8px;" />
+  </div>
+</div>

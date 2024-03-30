@@ -1,0 +1,11 @@
+table {
+  border-radius: 12px;
+  background-color: #fff;
+  padding: 3rem;
+  border-radius: 7px;
+  margin: 0rem;
+  margin-bottom: 1rem;
+  max-height: 35rem;
+  height: 100%;
+  overflow-y: auto;
+}

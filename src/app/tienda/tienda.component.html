@@ -1,0 +1,14 @@
+<div class="title">
+    <mat-icon routerLink="/home">home</mat-icon>
+    <h1>Caja</h1>
+</div>
+
+<div class="box">
+    <div>
+        <app-select-product [listadoProductos]="listadoProductos" (productoBuscado)="nuevaListaProductoBuscado($event)"
+            (productoAgregar)="actualizarListadoTabla($event)"></app-select-product>
+        <app-tabla [listadoTabla]="listadoTabla" (deleteEvent)="delete_producto_listado($event)"
+            (editEvent)="edit_producto_listado($event)" [precioLista]="precioLista"></app-tabla>
+    </div>
+    <app-factura [precioLista]="precioLista" (terminar)="terminar($event)"></app-factura>
+</div>

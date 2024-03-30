@@ -1,0 +1,57 @@
+<p>
+  sign-in works!
+</p>
+<div class="formulario-box" (keydown.enter)="validar()" [formGroup]="persona">
+  <div class="nombre-apellido-box">
+    <div>
+      <label for="">Nombre</label>
+      <input type="text" placeholder="Nombre" formControlName="nombre">
+    </div>
+    <div>
+      <label for="">Apellido</label>
+      <input type="text" placeholder="Apellido" formControlName="apellido">
+    </div>
+
+  </div>
+
+
+
+  <div class="email">
+    <label for="">Email</label>
+    <input type="email" placeholder="email" formControlName="email">
+  </div>
+
+  <div>
+    <label for="">Fecha de Nacimiento</label>
+    <input type="email" placeholder="dob" formControlName="dob">
+  </div>
+
+  <div>
+    <label for="">Telefono</label>
+    <input type="number" placeholder="Telefono" formControlName="telefono">
+  </div>
+
+  <div class="text-container">
+    <label for="">Selecciona tu genero</label>
+    <input type="text" list="generos" formControlName="genero" placeholder="Enter Here" />
+    <datalist id="generos">
+      <option value="masculino">Masculino</option>
+      <option value="femenino">femenino</option>
+      <option value="otros">otros</option>
+    </datalist>
+  </div>
+  <div class="text-container">
+    <label for="">Selecciona tu Municipio</label>
+    <input type="text" list="municipios" formControlName="municipio" placeholder="Enter Here" />
+    <datalist id="municipios">
+      <div *ngFor="let municipio of listadoMunicipio;">
+        <option value="{{municipio.municipio}}">{{municipio.municipio}}</option>
+      </div>
+
+
+
+    </datalist>
+  </div>
+  <input type="text" placeholder="Contraseña" formControlName="contraseña">
+  <button type="button" (click)="validar()">Enviar</button>
+</div>

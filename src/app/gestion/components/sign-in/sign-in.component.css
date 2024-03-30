@@ -1,0 +1,21 @@
+.formulario-box {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 50rem;
+  padding: 1rem;
+  border: 1rem solid black;
+}
+label {
+  display: block;
+  margin-bottom: 1rem;
+}
+.nombre-apellido-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1rem;
+  place-items: center;
+}
+.email {
+}

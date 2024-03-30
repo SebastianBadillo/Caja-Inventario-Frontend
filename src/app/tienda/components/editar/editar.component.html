@@ -1,0 +1,40 @@
+<div class="container">
+  <!-- <h2>Editar Cantidad</h2> -->
+  <!-- <label for="">Cantidad</label>
+  <input type="number" placeholder="Digite la nueva cantidad" value="{{productoEditado.cantidad}}"
+    [(ngModel)]="productoEditado.cantidad" />
+
+
+  <button type="button" mat-button matDialogClose (click)="closePopUp()">
+    Finalizar
+  </button> -->
+
+  <mat-card>
+    <mat-card-content>
+      <div class="cardPrice">
+        <div>
+          <h3>Cantidad</h3>
+        </div>
+        <div><mat-form-field class="example-full-width">
+            <mat-label>Cantidad</mat-label>
+            <input type="number" matInput placeholder="Digite la nueva cantidad" value="{{productoEditado.cantidad}}"
+              [(ngModel)]="productoEditado.cantidad">
+
+
+          </mat-form-field></div>
+      </div>
+      <button type="button" mat-button matDialogClose (click)="closePopUp()">
+        Finalizar
+      </button>
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<!-- <mat-form-field class="example-full-width">
+  <mat-label>Email</mat-label>
+  <input type="number" matInput placeholder="Digite la nueva cantidad" value="{{productoEditado.cantidad}}"
+    [(ngModel)]="productoEditado.cantidad">
+  <mat-hint>Errors appear instantly!</mat-hint>
+
+</mat-form-field> -->
