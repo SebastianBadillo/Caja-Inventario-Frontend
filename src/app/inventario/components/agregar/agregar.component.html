@@ -1,0 +1,93 @@
+<div class="formulario">
+
+  <h2>Agrega Inventariado</h2>
+  <div>
+    <label>El producto, ¿ es agregado por primera vez?</label>
+    <mat-radio-group [(ngModel)]="option" (change)="onOptionChange()">
+      <mat-radio-button [value]="'true'">Sí</mat-radio-button>
+      <mat-radio-button [value]="'false'">No</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <form class="Form" *ngIf="estado" [formGroup]="producto">
+    <h3>Formulario para añadir producto</h3>
+    <div class="prodFields">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre Producto</mat-label>
+        <input type="text" matInput formControlName="nombre">
+
+
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Codigo Producto</mat-label>
+        <input type="number" matInput formControlName="codigo">
+
+
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Precio Producto</mat-label>
+        <input type="number" matInput formControlName="precio">
+
+
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Descripcion Producto</mat-label>
+        <input type="text" matInput formControlName="descripcion">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Empresa del producto</mat-label>
+        <input type="text" matInput formControlName="empresa">
+      </mat-form-field>
+    </div>
+    <div class="box">
+      <button mat-flat-button class="clean" color="primary" aria-label="Example icon button with a home icon"
+        (click)="addProduct()">
+        Añadir Product <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </form> <!--Product Form-->
+
+  <form class="Form" *ngIf="estado === false" [formGroup]="inventario">
+    <h3>Formulario para añadir Inventario</h3>
+    <div class="prodFields">
+      <mat-form-field appearance="fill">
+        <mat-label> Producto</mat-label>
+        <input type="text" matInput formControlName="nombreProducto" [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" (optionSelected)="optionSelected($event)">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option.nombre">
+            {{option.nombre}}
+          </mat-option>
+        </mat-autocomplete>
+
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Cantidad Producto</mat-label>
+        <input type="number" matInput formControlName="cantidad">
+
+
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha de ingreso</mat-label>
+        <input type="date" matInput formControlName="fechaIn">
+
+
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha de vencimiento</mat-label>
+        <input type="date" matInput formControlName="fechaVen">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Lote</mat-label>
+        <input type="text" matInput formControlName="lote">
+      </mat-form-field>
+    </div>
+    <div class="box">
+      <button mat-flat-button class="clean" color="primary" aria-label="Example icon button with a home icon"
+        (click)="addInventario()">
+        Añadir Inventario <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </form><!--Inventario Form-->
+</div><!--Big Box-->

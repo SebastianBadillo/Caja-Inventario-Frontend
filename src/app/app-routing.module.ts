@@ -23,6 +23,12 @@ const routes: Routes = [
       import('./inventario/inventario.module').then((m) => m.InventarioModule),
   },
   {
+    path: 'inventario/producto',
+    loadChildren: () =>
+      import('./inventario/inventario.module').then((m) => m.InventarioModule),
+  },
+
+  {
     path: 'home',
     loadChildren: () => import('./home/home.module').then((m) => m.HomeModule),
   },

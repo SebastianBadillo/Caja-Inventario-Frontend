@@ -7,29 +7,23 @@
       <input type="text" placeholder="Escriba el nombre del  producto" aria-label="Number" matInput
         formControlName="informacion" [matAutocomplete]="auto">
       <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-        <mat-option *ngFor="let option of filteredOptions | async" [value]=" option.nombre">
-          {{option.nombre}}
+        <mat-option *ngFor="let option of filteredOptions | async" [value]="option.nombre"
+          (onSelectionChange)="actualizarLote(option.lote)">
+          {{option.nombre}} - <span>lote: {{option.lote}}</span>
         </mat-option>
       </mat-autocomplete>
-    </mat-form-field>
+    </mat-form-field><!--mat-form-->
 
     <div class="button_container">
       <button mat-flat-button (click)="send()" color="primary" aria-label=" Example icon button with a home icon">
         Agregar <mat-icon>add_circle</mat-icon>
       </button>
-      <!-- <button mat-flat-button color="primary">Primary</button> -->
 
-      <button mat-stroked-button class="clean" (click)="clean()" color="#CCE5FF"
+
+      <button mat-stroked-button class="clean" (click)="clean()" color="primary"
         aria-label="Example icon button with a home icon">
         Limpiar <mat-icon>cleaning_services</mat-icon>
       </button>
-    </div>
-  </form>
-
-</div>
-<!-- <datalist id=Nombres>
-  <option class=" option" value="{{producto.codigo}} -
-  {{producto.nombre}} " *ngFor="let producto of listadoProductos">{{producto.codigo}} -
-    {{producto.nombre}}</option>
-
-</datalist> -->
+    </div><!--Button container-->
+  </form><!--form-->
+</div><!--add_product_container-->

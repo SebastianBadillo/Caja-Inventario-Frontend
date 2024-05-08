@@ -2,6 +2,21 @@
   <mat-icon routerLink="/home">home</mat-icon>
   <h1>Inventario</h1>
 </div>
-<div class="table">
-  <app-table [listadoInventario]="listadoInventario"></app-table>
+
+<div class="add">
+  <button mat-flat-button color="primary" aria-label=" Example icon button with a home icon" color="accent"
+    (click)="openAddWindow(true)">
+    Añadir producto <mat-icon>add</mat-icon>
+  </button>
 </div>
+<div>
+  <div class="add">
+
+    <div>
+      <app-filter (sendList)="actualizarListaEvent($event)"
+        (LlamadoListaCompleta)="llenarListadoInventario()"></app-filter>
+    </div>
+  </div>
+  <div class="table">
+    <app-table [listadoInventario]="listaInvB" (EditEmit)="setEstado($event)"></app-table>
+  </div>

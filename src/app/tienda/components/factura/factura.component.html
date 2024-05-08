@@ -1,7 +1,5 @@
 <div class="factura">
   <div class="contenido">
-
-
     <form action="" [formGroup]="factura">
       <h2>Factura</h2>
 
@@ -18,41 +16,32 @@
           <input formControlName="dinero" matInput placeholder="Saldo ">
         </mat-form-field>
       </div>
-      <!-- <button (click)="calcVueltos()">Continuar</button> -->
+
       <div class="button">
         <button mat-flat-button color="primary" (click)="calcVueltos()">Continuar</button>
       </div>
 
-    </form>
-    <div>
+    </form><!--form factura-->
 
-      <!-- <button type="button" (click)="send()">Añadir</button>
-        <button type="button" (click)="clean()">Limpiar</button> -->
-      <div *ngIf="state">
+    <div *ngIf="state" class="result">
 
-        <mat-card class="mat-elevation-z0 ">
-          <mat-card-content>
-            <h3>Resumen de Compra</h3>
-            <div>
-              <p>Cliente: {{factura.value.cliente}}</p>
-              <p>Saldo: {{factura.value.dinero}} $</p>
-              <p>Total Factura: {{precioLista}} $</p>
-            </div>
-            <div class="cardPrice">
-              <div>Vueltos: </div>
-              <div> {{vueltos}} $</div>
-            </div>
+      <mat-card class="mat-elevation-z0 ">
+        <mat-card-content>
+          <h3>Resumen de Compra</h3>
+          <div>
+            <p>Cliente: {{factura.value.cliente}}</p>
+            <p>Saldo: {{factura.value.dinero}} $</p>
+            <p>Total Factura: {{precioLista}} $</p>
+          </div>
+          <div class="cardPrice">
+            <div>Vueltos: </div>
+            <div> {{vueltos}} $</div>
+          </div>
 
 
-          </mat-card-content>
-        </mat-card>
-        <button mat-stroked-button (click)="terminate()">Finalizar Compra</button>
-
-
-      </div>
-    </div>
-
-
-
-  </div>
-</div>
+        </mat-card-content>
+      </mat-card>
+      <button mat-stroked-button (click)="terminate()">Finalizar Compra</button>
+    </div><!--result-->
+  </div><!--Contenido-->
+</div><!--Factura-->

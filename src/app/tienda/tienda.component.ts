@@ -13,21 +13,18 @@ import { TablaComponent } from './components/tabla/tabla.component';
 })
 export class TiendaComponent implements OnInit {
   listadoProductos = [];
-
   listadoTabla = [];
   precioLista: any;
-  @Output() busqueda;
 
   constructor(
     private productService: ProductServiceService,
     private matDialog: MatDialog
   ) {}
 
-  async ngOnInit() {
-    //await this.llenarListaProductos();
-  }
+  ngOnInit() {}
 
-  async llenarListaProductos() {
+  /** Llenar listado */
+  llenarListaProductos() {
     this.productService.getAllProductos().subscribe({
       next: (data) => {
         this.listadoProductos = data.map((item: any) => {
@@ -37,8 +34,6 @@ export class TiendaComponent implements OnInit {
             nombre: item.nombre,
             empresa: item.empresa,
             codigo: item.codigo,
-            fechaVen: item.fechaVen,
-            fechaIn: item.fechaIn,
             descripcion: item.descripcion,
             precio: item.precio,
           };
@@ -47,22 +42,30 @@ export class TiendaComponent implements OnInit {
     });
   }
 
+  /**Actializar listado, y actualizar cantidades */
   actualizarListadoTabla(producto: any) {
-    const cantidad = 1;
-
+    const seleccionado = 1;
+    console.log(producto.cantidad);
+    console.log(producto.lote);
+    console.log(producto.inventario_id);
     let indice = this.listadoTabla.findIndex(
-      (objeto) => objeto.id == producto.id && objeto.nombre == producto.nombre
+      (objeto) =>
+        objeto.id == producto.id &&
+        objeto.nombre == producto.nombre &&
+        objeto.lote == producto.lote
     );
+
     if (indice != -1) {
-      this.listadoTabla[indice].cantidad += 1;
+      this.listadoTabla[indice].seleccionado += 1;
     } else {
-      const clone = { ...producto, cantidad: 1 };
+      const clone = { ...producto, seleccionado: 1 };
       this.listadoTabla.push(clone);
+      console.log(clone.seleccionado);
     }
-    console.log(this.listadoTabla);
+
     this.calcPrecioLista();
   }
-
+  /** Eliminar el producto de la lista */
   delete_producto_listado(producto) {
     this.listadoTabla = this.listadoTabla.filter(
       (prod) => prod.nombre !== producto.nombre
@@ -70,6 +73,7 @@ export class TiendaComponent implements OnInit {
     this.calcPrecioLista();
   }
 
+  /**Funcion para abrir el mat-Dialog */
   edit_producto_listado(producto: any) {
     var popUp = this.matDialog.open(EditarComponent, {
       width: '350px',
@@ -92,13 +96,15 @@ export class TiendaComponent implements OnInit {
       this.calcPrecioLista();
     });
   }
+  /**Calcular el precio de la lista */
   calcPrecioLista() {
     this.precioLista = 0;
     this.listadoTabla.forEach((prod) => {
-      this.precioLista += prod.cantidad * prod.precio;
+      this.precioLista += prod.seleccionado * prod.precio;
     });
   }
 
+  /**Mapear respuesta del endPoint (lista filtrada) */
   nuevaListaProductoBuscado(nombre: any) {
     this.productService.getProductoBuscado(nombre).subscribe({
       next: (data) => {
@@ -108,18 +114,22 @@ export class TiendaComponent implements OnInit {
             nombre: item.nombre,
             empresa: item.empresa,
             codigo: item.codigo,
-            fechaVen: item.fechaVen,
-            fechaIn: item.fechaIn,
             descripcion: item.descripcion,
             precio: item.precio,
           };
         });
       },
     });
-    //console.log(this.listadoProductos);
   }
 
+  /**Resets */
   terminar(bool: any) {
+    this.listadoTabla.forEach((element) => {
+      const setCantidad = element.cantidad - element.seleccionado;
+      this.productService
+        .updateInventory(setCantidad, element.inventario_id)
+        .subscribe();
+    });
     if (bool) {
       this.listadoTabla = [];
       this.precioLista = 0;

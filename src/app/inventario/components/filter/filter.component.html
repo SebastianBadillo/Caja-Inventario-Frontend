@@ -1,0 +1,32 @@
+<div action="" class="add_product_container">
+
+  <form class="example-form" [formGroup]="producto">
+
+    <mat-form-field class="example-full-width input" appearance="fill">
+      <mat-label>Producto</mat-label>
+      <input type="text" placeholder="Escriba el nombre del  producto" aria-label="Number" matInput
+        formControlName="informacion" [matAutocomplete]="auto">
+      <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let option of filteredOptions | async" [value]=" option.nombre">
+          {{option.nombre}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+
+    <div class="button_container">
+      <button mat-flat-button color="primary" aria-label=" Example icon button with a home icon" (click)="send()">
+        Buscar <mat-icon>search</mat-icon>
+      </button>
+
+      <button mat-flat-button color="primary" aria-label=" Example icon button with a home icon" (click)="all()">
+        Mostrar Todo <mat-icon>done_all</mat-icon>
+      </button>
+
+      <button mat-stroked-button class="clean" color="#CCE5FF" aria-label="Example icon button with a home icon">
+        Limpiar <mat-icon>cleaning_services</mat-icon>
+      </button>
+    </div>
+  </form>
+
+</div>

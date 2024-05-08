@@ -1,0 +1,40 @@
+<div class="formulario">
+  <h2>Edita tu Inventario</h2>
+
+  <form [formGroup]="inventario">
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input type="text" matInput formControlName="nombre">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Codigo</mat-label>
+      <input type="number" matInput formControlName="codigo">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Precio</mat-label>
+      <input type="number" matInput formControlName="precio">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Lote</mat-label>
+      <input type="text" matInput formControlName="lote">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Cantidad</mat-label>
+      <input type="text" matInput formControlName="cantidad">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>fecha Ingreso</mat-label>
+      <input type="text" matInput formControlName="fechain">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>fecha Vencimiento</mat-label>
+      <input type="text" matInput formControlName="fechaven">
+    </mat-form-field>
+  </form>
+  <div class="button-box">
+    <button mat-flat-button class="clean" color="primary" class="button" (click)="closePopUp()">
+      Listo <mat-icon>check</mat-icon>
+    </button>
+  </div>
+
+</div>

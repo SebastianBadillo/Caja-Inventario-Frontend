@@ -21,14 +21,13 @@ import { MatTable, MatTableDataSource } from '@angular/material/table';
 export class TablaComponent implements OnChanges {
   @Input() listadoTabla: any;
   @Input() precioLista: any;
-  @Output()
-  deleteEvent: EventEmitter<any> = new EventEmitter<any>();
+  @Output() deleteEvent: EventEmitter<any> = new EventEmitter<any>();
   @Output() editEvent: EventEmitter<any> = new EventEmitter<any>();
 
   displayedColumns: string[] = [
     '#',
-    // 'Código',
     'Nombre',
+    'Lote',
     'Cantidad',
     'Precio Unitario',
     'Opciones',
@@ -40,28 +39,17 @@ export class TablaComponent implements OnChanges {
   constructor(private cdr: ChangeDetectorRef) {}
 
   ngOnChanges(changes: SimpleChanges): void {
+    /* Forzar angular a revisar cambios y actualizar vistas */
     this.dataSource = new MatTableDataSource<any>(this.listadoTabla);
-
     this.cdr.detectChanges();
     this.table.renderRows();
-    if (changes['listadoTabla']) {
-      this.dataSource = new MatTableDataSource<any>(this.listadoTabla);
-      console.log(1);
-      this.cdr.detectChanges();
-      this.table.renderRows();
-    }
   }
 
+  /**Emitir el produco que se debe quitar de la lista */
   eliminate(producto: any) {
     this.deleteEvent.emit(producto);
   }
-
-  addData() {
-    console.log(this.table);
-    this.dataSource = new MatTableDataSource<any>(this.listadoTabla);
-    this.table.renderRows();
-  }
-
+  /**Emitir el producto que debe ser editado */
   edit(producto: any) {
     this.editEvent.emit(producto);
   }
