@@ -3,7 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Observable, map, of, startWith } from 'rxjs';
 import { fromEvent } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
-import { ProductServiceService } from '../../services/productService/product-service.service';
+import { ProductServiceService } from '../../services/product-service.service';
 
 @Component({
   selector: 'app-select-product',

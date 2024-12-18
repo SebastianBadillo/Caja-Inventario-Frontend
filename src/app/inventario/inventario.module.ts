@@ -17,7 +17,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { EditarComponent } from './components/editar/editar.component';
 import { AgregarComponent } from './components/agregar/agregar.component';
 import { MatRadioModule } from '@angular/material/radio';
-import { ProductServiceService } from '../tienda/services/productService/product-service.service';
+import { ProductServiceService } from '../tienda/services/product-service.service';
 
 @NgModule({
   imports: [

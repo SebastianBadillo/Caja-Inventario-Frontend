@@ -1,5 +1,5 @@
 import { map } from 'rxjs';
-import { ProductServiceService } from './services/productService/product-service.service';
+import { ProductServiceService } from './services/product-service.service';
 import { Component, OnInit, Output } from '@angular/core';
 import { EditarComponent } from './components/editar/editar.component';
 import { MatDialog } from '@angular/material/dialog';
@@ -80,7 +80,7 @@ export class TiendaComponent implements OnInit {
       data: {
         codigo: producto.codigo,
         nombre: producto.nombre,
-        cantidad: producto.cantidad,
+        cantidad: producto.seleccionado,
       },
     });
     popUp.afterClosed().subscribe((item) => {
@@ -89,7 +89,7 @@ export class TiendaComponent implements OnInit {
         if (prod.nombre !== item.nombre) {
           return prod;
         } else {
-          prod.cantidad = parseInt(item.cantidad);
+          prod.seleccionado = parseInt(item.cantidad);
           return prod;
         }
       });

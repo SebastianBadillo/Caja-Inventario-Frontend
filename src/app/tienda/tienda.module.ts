@@ -9,7 +9,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SelectProductComponent } from './components/select-product/select-product.component';
-import { ProductServiceService } from './services/productService/product-service.service';
+import { ProductServiceService } from './services/product-service.service';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { TablaComponent } from './components/tabla/tabla.component';
@@ -41,6 +41,6 @@ import { MatCardModule } from '@angular/material/card';
     EditarComponent,
     FacturaComponent,
   ],
-  providers: [ProductServiceService, TiendaComponent],
+  providers: [ProductServiceService],
 })
 export class TiendaModule {}

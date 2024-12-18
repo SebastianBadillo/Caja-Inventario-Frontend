@@ -1,12 +1,9 @@
 import {
-  AfterViewInit,
   ChangeDetectorRef,
   Component,
   EventEmitter,
-  Injectable,
   Input,
   OnChanges,
-  OnInit,
   Output,
   SimpleChanges,
   ViewChild,
@@ -51,6 +48,7 @@ export class TablaComponent implements OnChanges {
   }
   /**Emitir el producto que debe ser editado */
   edit(producto: any) {
+    console.log(producto);
     this.editEvent.emit(producto);
   }
 }

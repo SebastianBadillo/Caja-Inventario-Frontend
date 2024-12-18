@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/internal/Observable';
 @Injectable()
 export class ProductServiceService {
   private unsuscribeRequest = new Subject<void>();
-  urlBackend = 'http://localhost:8080';
+  urlBackend = 'http://localhost:8080/tienda';
   constructor(private http: HttpClient) {}
   /**Obtener todo el listado de productos */
   getAllProductos(): Observable<any> {

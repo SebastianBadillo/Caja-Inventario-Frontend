@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ProductDetailsServiceService {
-  urlBackend = 'http://localhost:8080';
+  urlBackend = 'http://localhost:8080/tienda';
   constructor(private http: HttpClient) {}
 
   /**Obtener inventario por codigo */

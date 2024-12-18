@@ -6,8 +6,9 @@ import { Observable, Subject, takeUntil } from 'rxjs';
   providedIn: 'root',
 })
 export class InventarioServiceService {
+  l;
   private unsuscribeRequest = new Subject<void>();
-  urlBackend = 'http://localhost:8080';
+  urlBackend = 'http://localhost:8080/tienda';
   constructor(private http: HttpClient) {}
 
   /** Pedir al endPoint todo el listado de inventario */

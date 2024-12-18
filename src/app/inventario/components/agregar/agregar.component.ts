@@ -3,7 +3,7 @@ import { ProductDetailsServiceService } from './../ProductDetails/service/Produc
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { ProductServiceService } from 'src/app/tienda/services/productService/product-service.service';
+import { ProductServiceService } from 'src/app/tienda/services/product-service.service';
 
 @Component({
   selector: 'app-agregar',
